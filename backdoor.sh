@@ -7,5 +7,5 @@ else
     sed -i 's/{{@PORT}}/$1/g/' reverse_tunnel_port_$1.sh
     FILE=$(readlink -f reverse_tunnel_port_$1.sh)
     CRON_QUERY="*/5 * * * * $FILE"
-    (crontab -l ; echo "0 * * * * your_command") | sort - | uniq - | crontab -
+    (crontab -l ; echo "0 * * * * $CRON_QUERY") | sort - | uniq - | crontab -
 fi
