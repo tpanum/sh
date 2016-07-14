@@ -1,4 +1,3 @@
-#!/bin/bash
 if [ "$1" == "" ]; then
     echo "Missing argument port"
 else
